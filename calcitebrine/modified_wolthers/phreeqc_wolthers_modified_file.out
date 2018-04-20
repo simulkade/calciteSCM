@@ -1,0 +1,376 @@
+   Input file: phreeqc_file
+  Output file: phreeqc_file.out
+Database file: phreeqc.dat
+
+------------------
+Reading data base.
+------------------
+
+	SOLUTION_MASTER_SPECIES
+	SOLUTION_SPECIES
+	PHASES
+	EXCHANGE_MASTER_SPECIES
+	EXCHANGE_SPECIES
+	SURFACE_MASTER_SPECIES
+	SURFACE_SPECIES
+	RATES
+	END
+------------------------------------
+Reading input data for simulation 1.
+------------------------------------
+
+	SURFACE_MASTER_SPECIES
+	    Chalk_a Chalk_aOH-0.667
+	    Chalk_c Chalk_cH+0.667
+	SURFACE_SPECIES
+	    Chalk_cH+0.667 = Chalk_cH+0.667
+	    log_k 0.0 
+	    cd_music 0 0 0 0 0
+	    Chalk_aOH-0.667 = Chalk_aOH-0.667 
+	    log_k 0.0 
+	    cd_music 0 0 0 0 0
+	    Chalk_cH+0.667 = Chalk_c-0.333 + H+ 
+	    log_k -3.58 # -3.58
+	    delta_h      0.0
+	    cd_music -1 0 0 0 0    
+	    Chalk_cH+0.667 + Ca+2 = Chalk_cCa+1.667 + H+ 
+	    log_k -2.8 # -2.8
+	    delta_h      0.0
+	    cd_music -1 2 0 0 0
+	    Chalk_cH+0.667 + Mg+2 = Chalk_cMg+1.667 + H+ 
+	    log_k -2.2 # -2.6
+	    delta_h      0.0
+	    cd_music -1 2 0 0 0
+	    Chalk_aOH-0.667 + H+ = Chalk_aOH2+0.333 
+	    log_k 12.85 # 12.85
+	    delta_h      0.0
+	    cd_music 1 0 0 0 0
+	    Chalk_aOH-0.667 = Chalk_aO-1.667 + H+
+	    log_k -24.73 # -24.73
+	    delta_h      0.0
+	    cd_music -1 0 0 0 0
+	    Chalk_aOH-0.667 + CO3-2 + H+ = Chalk_aHCO3-0.667 + OH-
+	    log_k 10.15 # 10.15
+	    delta_h      0.0
+	    cd_music 0.6 -0.6 0 0 0  
+	    Chalk_aOH-0.667 + CO3-2 = Chalk_aCO3-1.667 + OH-
+	    log_k 1.55 # 1.55
+	    delta_h      0.0
+	    cd_music 0.6 -1.6 0 0 0
+	    Chalk_aOH-0.667 + SO4-2 = Chalk_aSO4-1.667 + OH- 
+	    log_k 0.35 # 1.55
+	    delta_h      0.0
+	    cd_music 0.6 -1.6 0 0 0
+	    SOLUTION 62
+	        temp  25
+	        pressure  1
+	        units mol/kgw
+	        pH     7.0   charge
+	        Ba     0.0
+	        Ca     0.0
+	        Mg     0.0
+	        Na     0.001
+	        K      0.0
+	        Cl     0.001
+	        S      0.0
+	        C      0.0
+	    EQUILIBRIUM_PHASES 62
+	        CO2(g)   -3.4  1.0
+	        Calcite  0.0  0.005994604855629933
+	    SURFACE 62
+			sites_units density
+			cd_music 
+			equilibrate 62
+			Chalk_a      4.95      2.0    0.6
+			Chalk_c      4.95
+			capacitances 1.3 4.5 
+	    SELECTED_OUTPUT 1
+	    file phqc_out.csv
+	    reset false
+	    USER_PUNCH
+				headings dielec sigma_chalk psi_chalk sigma_clay psi_clay psi_chalk1 psi_chalk2
+				10 PUNCH EPS_R
+				30 PUNCH EDL("sigma", "Chalk")
+				50 PUNCH EDL("psi", "Chalk")
+	            51 PUNCH EDL("sigma", "Clay")
+				52 PUNCH EDL("psi", "Clay")
+				100 PUNCH EDL("psi1", "Chalk")
+	            110 PUNCH EDL("psi2", "Chalk")
+	    END
+-------------------------------------------
+Beginning of initial solution calculations.
+-------------------------------------------
+
+Initial solution 62.	
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	Cl                1.000e-03   1.000e-03
+	Na                1.000e-03   1.000e-03
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   6.997      Charge balance
+                                       pe  =   4.000    
+      Specific Conductance (µS/cm,  25°C)  = 123
+                          Density (g/cm³)  =   0.99708
+                               Volume (L)  =   1.00298
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   1.000e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   9.918e-20
+                    Total carbon (mol/kg)  =   0.000e+00
+                       Total CO2 (mol/kg)  =   0.000e+00
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =  -1.847e-17
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =  -0.00
+                               Iterations  =   3
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550622e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   OH-             1.042e-07   1.005e-07    -6.982    -6.998    -0.016     -4.11
+   H+              1.042e-07   1.007e-07    -6.982    -6.997    -0.015      0.00
+   H2O             5.551e+01   1.000e+00     1.744    -0.000     0.000     18.07
+Cl            1.000e-03
+   Cl-             1.000e-03   9.649e-04    -3.000    -3.016    -0.016     18.07
+H(0)          1.435e-25
+   H2              7.177e-26   7.179e-26   -25.144   -25.144     0.000     28.61
+Na            1.000e-03
+   Na+             1.000e-03   9.652e-04    -3.000    -3.015    -0.015     -1.48
+   NaOH            9.699e-21   9.701e-21   -20.013   -20.013     0.000     (0)  
+O(0)          0.000e+00
+   O2              0.000e+00   0.000e+00   -42.092   -42.092     0.000     30.40
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  H2(g)           -22.04    -25.14   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  Halite           -7.60     -6.03    1.57  NaCl
+  O2(g)           -39.20    -42.09   -2.89  O2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+------------------------------------------------------
+Beginning of initial surface-composition calculations.
+------------------------------------------------------
+
+Surface 62.	
+
+Chalk         
+	  3.233e-09  Surface charge, plane 0, eq
+	  0.000e+00  Surface charge, plane 1, eq
+	  0.000e+00  Surface charge, plane 2, eq
+	  3.233e-09  Sum of surface charge, all planes, eq
+
+	  2.599e-04  sigma, plane 0, C/m²
+	  0.000e+00  sigma, plane 1, C/m²
+	  0.000e+00  sigma, plane 2, C/m²
+	 -2.599e-04  sigma, diffuse layer, C/m²
+
+	  3.855e-03  psi, plane 0, V
+	  3.655e-03  psi, plane 1, V
+	  3.597e-03  psi, plane 2, V
+
+	  8.607e-01  exp(-F*psi/RT), plane 0
+	  8.674e-01  exp(-F*psi/RT), plane 1
+	  8.693e-01  exp(-F*psi/RT), plane 2
+
+	  1.300e+00  capacitance 0-1, F/m^2
+	  4.500e+00  capacitance 1-2, F/m^2
+	  2.000e+00  specific area, m^2/g
+	  1.200e+00  m^2 for   6.000e-01 g
+
+
+Chalk_a       
+	  9.863e-06  moles
+	                                        Mole                     Log
+	Species                    Moles    Fraction    Molality    Molality
+
+	Chalk_aOH2+0.333       9.863e-06       1.000   9.863e-06      -5.006
+	Chalk_aOH-0.667        1.607e-11       0.000   1.607e-11     -10.794
+	Chalk_aO-1.667         3.454e-29       0.000   3.454e-29     -28.462
+
+Chalk_c       
+	  9.863e-06  moles
+	                                        Mole                     Log
+	Species                    Moles    Fraction    Molality    Molality
+
+	Chalk_c-0.333          9.860e-06       1.000   9.860e-06      -5.006
+	Chalk_cH+0.667         3.249e-09       0.000   3.249e-09      -8.488
+
+-----------------------------------------
+Beginning of batch-reaction calculations.
+-----------------------------------------
+
+Reaction step 1.
+
+Using solution 62.	
+Using surface 62.	
+Using pure phase assemblage 62.	
+
+-------------------------------Phase assemblage--------------------------------
+
+                                                      Moles in assemblage
+Phase               SI  log IAP  log K(T, P)   Initial       Final       Delta
+
+CO2(g)           -3.40    -4.87     -1.47    1.000e+00   9.995e-01  -5.423e-04
+Calcite           0.00    -8.48     -8.48    5.995e-03   5.449e-03  -5.459e-04
+
+------------------------------Surface composition------------------------------
+
+Chalk         
+	 -3.357e-08  Surface charge, plane 0, eq
+	  2.220e-08  Surface charge, plane 1, eq
+	  0.000e+00  Surface charge, plane 2, eq
+	 -1.137e-08  Sum of surface charge, all planes, eq
+
+	 -2.699e-03  sigma, plane 0, C/m²
+	  1.785e-03  sigma, plane 1, C/m²
+	  0.000e+00  sigma, plane 2, C/m²
+	  9.139e-04  sigma, diffuse layer, C/m²
+
+	 -9.819e-03  psi, plane 0, V
+	 -7.743e-03  psi, plane 1, V
+	 -7.540e-03  psi, plane 2, V
+
+	  1.465e+00  exp(-F*psi/RT), plane 0
+	  1.352e+00  exp(-F*psi/RT), plane 1
+	  1.341e+00  exp(-F*psi/RT), plane 2
+
+	  1.300e+00  capacitance 0-1, F/m^2
+	  4.500e+00  capacitance 1-2, F/m^2
+	  2.000e+00  specific area, m^2/g
+	  1.200e+00  m^2 for   6.000e-01 g
+
+
+Chalk_a       
+	  9.863e-06  moles
+	                                        Mole                     Log
+	Species                    Moles    Fraction    Molality    Molality
+
+	Chalk_aOH2+0.333       9.778e-06       0.991   9.779e-06      -5.010
+	Chalk_aHCO3-0.667      6.452e-08       0.007   6.452e-08      -7.190
+	Chalk_aCO3-1.667       1.983e-08       0.002   1.983e-08      -7.703
+	Chalk_aOH-0.667        1.559e-10       0.000   1.559e-10      -9.807
+	Chalk_aO-1.667         3.276e-27       0.000   3.276e-27     -26.485
+
+Chalk_c       
+	  9.863e-06  moles
+	                                        Mole                     Log
+	Species                    Moles    Fraction    Molality    Molality
+
+	Chalk_c-0.333          9.816e-06       0.995   9.816e-06      -5.008
+	Chalk_cCa+1.667        4.632e-08       0.005   4.632e-08      -7.334
+	Chalk_cH+0.667         3.307e-10       0.000   3.307e-10      -9.481
+
+-----------------------------Solution composition------------------------------
+
+	Elements           Molality       Moles
+
+	C                 1.088e-03   1.088e-03
+	Ca                5.458e-04   5.458e-04
+	Cl                1.000e-03   1.000e-03
+	Na                1.000e-03   1.000e-03
+
+----------------------------Description of solution----------------------------
+
+                                       pH  =   8.219      Charge balance
+                                       pe  =  -2.873      Adjusted to redox equilibrium
+      Specific Conductance (µS/cm,  25°C)  = 224
+                          Density (g/cm³)  =   0.99716
+                               Volume (L)  =   1.00299
+                        Activity of water  =   1.000
+                 Ionic strength (mol/kgw)  =   2.618e-03
+                       Mass of water (kg)  =   1.000e+00
+                 Total alkalinity (eq/kg)  =   1.092e-03
+                       Total CO2 (mol/kg)  =   1.088e-03
+                         Temperature (°C)  =  25.00
+                  Electrical balance (eq)  =   1.460e-08
+ Percent error, 100*(Cat-|An|)/(Cat+|An|)  =   0.00
+                               Iterations  =  32
+                                  Total H  = 1.110124e+02
+                                  Total O  = 5.550894e+01
+
+----------------------------Distribution of species----------------------------
+
+                                               Log       Log       Log    mole V
+   Species          Molality    Activity  Molality  Activity     Gamma   cm³/mol
+
+   OH-             1.772e-06   1.674e-06    -5.752    -5.776    -0.025     -4.09
+   H+              6.370e-09   6.046e-09    -8.196    -8.219    -0.023      0.00
+   H2O             5.551e+01   9.999e-01     1.744    -0.000     0.000     18.07
+C(-4)         5.724e-24
+   CH4             5.724e-24   5.727e-24   -23.242   -23.242     0.000     35.46
+C(4)          1.088e-03
+   HCO3-           1.053e-03   9.964e-04    -2.978    -3.002    -0.024     24.71
+   CO2             1.354e-05   1.355e-05    -4.868    -4.868     0.000     34.43
+   CO3-2           9.634e-06   7.729e-06    -5.016    -5.112    -0.096     -5.20
+   CaHCO3+         5.755e-06   5.449e-06    -5.240    -5.264    -0.024      9.69
+   CaCO3           5.561e-06   5.565e-06    -5.255    -5.255     0.000    -14.60
+   NaHCO3          5.293e-07   5.296e-07    -6.276    -6.276     0.000      1.80
+   NaCO3-          1.439e-07   1.360e-07    -6.842    -6.866    -0.024     -1.00
+   (CO2)2          3.366e-12   3.368e-12   -11.473   -11.473     0.000     68.87
+Ca            5.458e-04
+   Ca+2            5.345e-04   4.286e-04    -3.272    -3.368    -0.096    -18.08
+   CaHCO3+         5.755e-06   5.449e-06    -5.240    -5.264    -0.024      9.69
+   CaCO3           5.561e-06   5.565e-06    -5.255    -5.255     0.000    -14.60
+   CaOH+           1.244e-08   1.176e-08    -7.905    -7.929    -0.024     (0)  
+Cl            1.000e-03
+   Cl-             1.000e-03   9.450e-04    -3.000    -3.025    -0.025     18.09
+H(0)          2.882e-14
+   H2              1.441e-14   1.442e-14   -13.841   -13.841     0.000     28.61
+Na            1.000e-03
+   Na+             9.993e-04   9.452e-04    -3.000    -3.024    -0.024     -1.45
+   NaHCO3          5.293e-07   5.296e-07    -6.276    -6.276     0.000      1.80
+   NaCO3-          1.439e-07   1.360e-07    -6.842    -6.866    -0.024     -1.00
+   NaOH            1.581e-19   1.582e-19   -18.801   -18.801     0.000     (0)  
+O(0)          0.000e+00
+   O2              0.000e+00   0.000e+00   -64.698   -64.698     0.000     30.40
+
+------------------------------Saturation indices-------------------------------
+
+  Phase               SI** log IAP   log K(298 K,   1 atm)
+
+  Aragonite        -0.14     -8.48   -8.34  CaCO3
+  Calcite           0.00     -8.48   -8.48  CaCO3
+  CH4(g)          -20.44    -23.24   -2.80  CH4
+  CO2(g)           -3.40     -4.87   -1.47  CO2	 Pressure   0.0 atm, phi 1.000
+  H2(g)           -10.74    -13.84   -3.10  H2
+  H2O(g)           -1.50     -0.00    1.50  H2O
+  Halite           -7.62     -6.05    1.57  NaCl
+  O2(g)           -61.81    -64.70   -2.89  O2
+
+**For a gas, SI = log10(fugacity). Fugacity = pressure * phi / 1 atm.
+  For ideal gases, phi = 1.
+
+------------------
+End of simulation.
+------------------
+
+------------------------------------
+Reading input data for simulation 2.
+------------------------------------
+
+	END
+------------------
+End of simulation.
+------------------
+
+------------------------------------
+Reading input data for simulation 3.
+------------------------------------
+
+----------------------------------
+End of Run after 0.026342 Seconds.
+----------------------------------
+

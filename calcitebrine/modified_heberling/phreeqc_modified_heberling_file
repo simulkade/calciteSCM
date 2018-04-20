@@ -1,0 +1,107 @@
+SURFACE_MASTER_SPECIES
+Chalk_a Chalk_aOH1.5
+Chalk_c Chalk_cH0.5
+
+SURFACE_SPECIES
+Chalk_aOH1.5 = Chalk_aOH1.5
+-cd_music 0 0 0
+log_k 0.0
+Chalk_cH0.5 = Chalk_cH0.5
+-cd_music 0 0 0
+log_k 0.0
+
+#dummy reactions producing surface species with fractional charges
+# are these necessary? Is there a way around it?
+Chalk_aOH1.5 = Chalk_aOH-0.5 + 0.5 H+
+-cd_music -0.5 0 0
+log_k 20
+Chalk_cH0.5 = Chalk_c-0.5 + 0.5 H+
+-cd_music -0.5 0 0
+log_k 20
+
+#inner sphere reactions
+Chalk_aOH-0.5 + H+ = Chalk_aOH2+0.5
+-cd_music 1 0 0
+log_K 0.501 # 0.501
+delta_h      0.0
+
+#outer sphere reactions
+Chalk_aOH-0.5 + Na+ = Chalk_aOHNa+0.5
+-cd_music 0 1 0
+log_K 0.56 # 0.56
+delta_h      0.0
+Chalk_aOH-0.5 + Ca+2 = Chalk_aOHCa+1.5
+-cd_music 0 2 0
+log_K 1.68 # 1.68
+delta_h      0.0
+Chalk_aOH-0.5 + Mg+2 = Chalk_aOHMg+1.5
+-cd_music 0 2 0
+log_K 1.48 # 1.48
+delta_h      0.0
+Chalk_aOH2+0.5 + Cl- = Chalk_aOH2Cl-0.5
+-cd_music 0 -1 0
+log_K -0.05 # -0.05
+delta_h      0.0
+Chalk_aOH2+0.5 + HCO3- = Chalk_aOH3CO3-0.5
+-cd_music 0 -1 0
+log_K 0.04 # 0.04
+delta_h      0.0
+Chalk_aOH2+0.5 + HCO3- = Chalk_aOH2CO3-1.5+ H+ 
+-cd_music 0 -2 0
+log_K -7.07 # -7.07
+delta_h      0.0
+Chalk_aOH2+0.5 + SO4-2 = Chalk_aOH2SO4-1.5
+-cd_music 0 -2 0
+log_K 0.4 # 0.4
+delta_h      0.0
+Chalk_c-0.5 + Na+ = Chalk_cNa+0.5
+-cd_music 0 1 0
+log_K 0.56 #  0.56
+delta_h      0.0
+Chalk_c-0.5 + Ca+2 = Chalk_cCa+1.5
+-cd_music 0 2 0
+log_K 1.68 # 1.68
+delta_h      0.0
+Chalk_c-0.5 + Mg+2 = Chalk_cMg+1.5
+-cd_music 0 2 0
+log_K 1.48 # 1.48
+delta_h      0.0
+    SOLUTION 62
+        temp  25
+        pressure  1
+        -units mol/kgw
+        pH     7.0   charge
+        Ba     0.0
+        Ca     0.0
+        Mg     0.0
+        Na     0.001
+        K      0.0
+        Cl     0.001
+        S      0.0
+        C      0.0
+    EQUILIBRIUM_PHASES 62
+        CO2(g)   -3.4  1.0
+        Calcite  0.0  0.005994604855629933
+    # END
+    SURFACE 62
+		-sites_units density
+		-cd_music 
+		-equilibrate 62
+		Chalk_a      4.95      2.0    0.6
+		Chalk_c      4.95
+		-capacitance 0.45 999.99 
+		#-donnan # uncomment, and see the effect on Charge Balance...
+    SELECTED_OUTPUT 1
+    -file phqc_out.csv
+    -reset false
+    USER_PUNCH
+			-headings dielec sigma_chalk psi_chalk sigma_clay psi_clay psi_chalk1 psi_chalk2
+			10 PUNCH EPS_R
+			30 PUNCH EDL("sigma", "Chalk")
+			50 PUNCH EDL("psi", "Chalk")
+            51 PUNCH EDL("sigma", "Clay")
+			52 PUNCH EDL("psi", "Clay")
+			100 PUNCH EDL("psi1", "Chalk")
+            110 PUNCH EDL("psi2", "Chalk")
+    END
+END
